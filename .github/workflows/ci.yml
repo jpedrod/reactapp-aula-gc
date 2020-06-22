@@ -18,6 +18,7 @@ jobs:
         with:
             node-version: "12.x"
       - run: npm ci
+
       - name: Cache node_modules
         uses: actions/cache@v1
         with:
@@ -64,8 +65,8 @@ jobs:
         env:
           SURGE_LOGIN: ${{secrets.SURGE_LOGIN}}
           SURGE_TOKEN: ${{secrets.SURGE_TOKEN}}
-r
-      - name: Deploy to Production 
+
+      - name: Deploy to Production  
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: npx surge --project ./build --domain  reactapp-jpedro.surge.sh
         env:
